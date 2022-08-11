@@ -1,10 +1,15 @@
+import Navbar from './components/Navbar';
+import MainApp from './components/MainApp';
+
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <div>App Beginning</div>
-    </div>
+      <div>
+          <Navbar></Navbar>
+          <MainApp></MainApp>
+      </div>
   );
 }
 
