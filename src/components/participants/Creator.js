@@ -45,17 +45,19 @@ export class Creator extends Component {
 
   async seeOutcome (price, address){
     const addressFormat = Reach.formatAddress(address);
+    const {nftUri} = this.context;
     this.setState({
       appState: "seeOutcome",
-      args: [price, addressFormat]
+      args: [price, addressFormat, nftUri]
     })
   }
 
   async showBid (bid){
     console.log("Bid: ", fmt(bid))
+    const {nftUri} = this.context;
     this.setState({
       appState: "showBid",
-      args: [bid],
+      args: [bid, nftUri],
     });
   }
 
@@ -66,15 +68,17 @@ export class Creator extends Component {
   }
 
   async isAuctionOn (){
+    const {nftUri}  = this.context
     const response = await new Promise (res => {
       this.setState({
           appState: "isAuctionOn",
-          args: [this.contractInfo, this.setHasShownContractInfo],
+          args: [this.contractInfo, this.setHasShownContractInfo, nftUri],
           resIsAuctionOn: res,
       })
     });
     this.setState({
-      appState: "awaitingFirstBidder"
+      appState: "awaitingFirstBidder",
+      args: [nftUri]
     })
     return response;
   }
@@ -95,19 +99,25 @@ export class Creator extends Component {
 
     console.log(this.nftId, this.nftTemplate)
 
-    const {account} = this.context;
+    const {account, setNftUri} = this.context;
+    setNftUri(nftTemplate.uri);
+    this.setState({
+      appState: "",
+      args: [nftTemplate.uri]
+    })
     const contract = account.contract(Backend);
     console.log(account)
     console.log(contract);
     Backend.Creator(contract, this);
-    this.setState({
-      appState: ""
-    })
     const contractInfo = JSON.stringify(await contract.getInfo(), null, 2);
-
     this.contractInfo = contractInfo;
 
     console.log("Info: ", contractInfo);
+    this.setState({
+      appState: "isAuctionOn",
+      args: [this.contractInfo, this.setHasShownContractInfo,nftTemplate.uri]
+    })
+
 
   }
 

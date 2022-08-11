@@ -17,10 +17,10 @@ export const MainAppProvider = ({children}) => {
 
 
   const [appView, setAppView] = useState("ConnectWallet");
-  const [accountBalance, setAccountBalance] = useState(0);
   const [participant, setParticipant] = useState();
   const [accountBal, setAccountBal] = useState(0);
   const [account, setAccount] = useState();
+  const [nftUri, setNftUri] = useState('');
 
   async function connectWallet() {
     setAppView("Loading");
@@ -59,7 +59,7 @@ export const MainAppProvider = ({children}) => {
 
 
   return(
-    <MainAppContext.Provider value={{connectWallet, appView, participant, deployBidder, deployCreator, accountBal, setAccountBal, account}}>
+    <MainAppContext.Provider value={{connectWallet, appView, participant, deployBidder, deployCreator, accountBal, setAccountBal, account, nftUri, setNftUri}}>
       {children}
     </MainAppContext.Provider>
   )

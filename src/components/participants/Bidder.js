@@ -40,18 +40,26 @@ export class Bidder extends Component {
 
   async seeOutcome (price, address){
     const addressFormat = Reach.formatAddress(address);
+    const {nftUri} = this.context
     this.setState({
       appState: "seeOutcome",
-      args: [price, addressFormat]
+      args: [price, addressFormat, nftUri]
     })
   }
 
   async showBid (bid){
     console.log("Bid: ", fmt(bid))
+    const {nftUri} = this.context
     this.setState({
       appState: "showBid",
-      args: [bid],
+      args: [bid, nftUri],
     });
+  }
+
+  getNftUri (nftUri) {
+    console.log("Get NFT Called: " + nftUri)
+    const {setNftUri} = this.context
+    setNftUri(nftUri);
   }
 
   async informTimeout (){
@@ -61,15 +69,17 @@ export class Bidder extends Component {
   }
 
   async isAuctionOn (){
+    const {nftUri} = this.context;
     const response = await new Promise (res => {
       this.setState({
           appState: "isAuctionOn",
-          args: [],
+          args: [nftUri],
           resIsAuctionOn: res,
       })
     });
     this.setState({
-      appState: "awaitingFirstBidder"
+      appState: "awaitingFirstBidder",
+      args: [nftUri]
     })
     return response;
   }
@@ -79,10 +89,11 @@ export class Bidder extends Component {
   }
 
   async getBid(price){
+    const {nftUri} = this.context
     const bid = await new Promise(res => {
       this.setState({
           appState: "getBid",
-          args: [price],
+          args: [price, nftUri],
           resGetBid: res,
       });
       console.log("This is what res is: ", res)
@@ -90,7 +101,8 @@ export class Bidder extends Component {
     console.log(`A bid of ${bid} has been placed.`)
     const parsedBid = Reach.parseCurrency(bid);
     this.setState({
-      appState: "awatingOtherBidders"
+      appState: "awatingOtherBidders",
+      args: [nftUri]
     })
     return parsedBid;
   }
@@ -100,12 +112,13 @@ export class Bidder extends Component {
   }
 
   async attachContract(contractInfo){
-    const {account} = this.context;
+    const {account, nftUri} = this.context;
     const contract = account.contract(Backend, JSON.parse(contractInfo));
     Backend.Bidder(contract, this);
     console.log("Attacher ctc: " ,contract);
     this.setState({
-      appState: "awatingAuction"
+      appState: "awatingAuction",
+      args: [nftUri]
     })
   }
 

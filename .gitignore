@@ -27,3 +27,5 @@ src/reach
 src/.reach
 src/build
 .vscode
+
+/src/privates.js

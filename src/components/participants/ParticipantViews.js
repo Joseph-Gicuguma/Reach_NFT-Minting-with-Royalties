@@ -18,12 +18,13 @@ export const InformTimeout = () => {
   );
 };
 
-export const SeeOutcome = ({ price, address }) => {
+export const SeeOutcome = ({ price, address , nftUri}) => {
   const formatAddress = Reach.formatAddress(address);
   const formatPrice = fmt(price);
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
+        {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
         <div>
           {formatAddress}{" "}
           <p className=" font-bold">won the Auction and Paid</p> 
@@ -35,11 +36,12 @@ export const SeeOutcome = ({ price, address }) => {
   );
 };
 
-export const ShowBid = ({ bid }) => {
+export const ShowBid = ({ bid, nftUri }) => {
   const formatBid = fmt(bid);
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
+        {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
         <div>
           <p className=" font-bold">Current leading bid is</p>
           {formatBid}{" "}<span className=" font-bold">ALGO. </span>
@@ -50,7 +52,7 @@ export const ShowBid = ({ bid }) => {
   );
 };
 
-export const IsAuctionOn = ({ isAuctionOn }) => {
+export const IsAuctionOn = ({ isAuctionOn, nftUri }) => {
   const handleReject = () => {
     return isAuctionOn(false);
   };
@@ -65,6 +67,7 @@ export const IsAuctionOn = ({ isAuctionOn }) => {
           <p className="py-3 text-5xl md:text-5xl font-bold">
             Wanna Start the Bid?
           </p>
+          {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
           <button
             className="py-3 px-6 sm:w-[50%] my-4 flex bg-cyan-700 text-white font-bold rounded-lg "
             onClick={handleAccept}
@@ -87,10 +90,11 @@ export const IsAuctionOn = ({ isAuctionOn }) => {
   );
 };
 
-export const AwaitingFirstBidder = () => {
+export const AwaitingFirstBidder = ({nftUri}) => {
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
+        {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
         <p className=" font-bold">Waiting for the First Bidder...</p>
       </div>
     </div>

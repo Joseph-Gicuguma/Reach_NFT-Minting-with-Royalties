@@ -12,7 +12,7 @@ const Reach = loadStdlib("ALGO");
 
 const fmt = (x) => Reach.formatCurrency(x, 4);
 
-const GetBid = ({ price, getBid }) => {
+const GetBid = ({ price, getBid, nftUri }) => {
   const formatPrice = fmt(price);
   const [bid, setBid] = useState(0);
   const handleSubmit = () => {
@@ -23,6 +23,7 @@ const GetBid = ({ price, getBid }) => {
       <div className="flex w-full min-h-screen justify-center items-center">
         <div className="flex flex-col space-y-6 bg-cyan-700 w-50% maw-w-4xl p-8 rounded-xl shadow-lg teal-white">
           <div className="flex flex-col justify-between">
+            {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
             <div>
               <h1 className="font-bold text-4xl tracking-wide">
                 Place your bid
@@ -104,11 +105,12 @@ const AttachContract = ({ attachContract }) => {
   );
 };
 
-const WaitingOtherBidders = () => {
+const WaitingOtherBidders = ({nftUri}) => {
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
         <div>
+          {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
           <p className=" font-bold">Please waiting. Placing bid...</p>
         </div>
       </div>
@@ -116,10 +118,11 @@ const WaitingOtherBidders = () => {
   );
 };
 
-const AwaitingAution = () => {
+const AwaitingAution = ({nftUri}) => {
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
+        {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
         <div>
           <p className=" font-bold">Waiting for Auction to Begin...</p>
         </div>
@@ -142,26 +145,27 @@ const BidderViews = ({
     case "attachContract":
       return <AttachContract attachContract={attachContract}></AttachContract>;
     case "getBid":
-      return <GetBid price={args[0]} getBid={getBid}></GetBid>;
+      return <GetBid price={args[0]} getBid={getBid} nftUri={args[1]}></GetBid>;
     case "informTimeout":
       return <InformTimeout />;
     case "seeOutcome":
-      return <SeeOutcome price={args[0]} address={args[1]} />;
+      return <SeeOutcome price={args[0]} address={args[1]} nftUri={args[2]}/>;
     case "showBid":
-      return <ShowBid bid={args[0]} />;
+      return <ShowBid bid={args[0]} nftUri={args[1]}/>;
     case "isAuctionOn":
-      return <IsAuctionOn isAuctionOn={isAuctionOn} />;
+      return <IsAuctionOn isAuctionOn={isAuctionOn} nftUri={args[0]}/>;
     case "awaitingFirstBidder":
-      return <AwaitingFirstBidder />;
+      return <AwaitingFirstBidder nftUri={args[0]}/>;
     case "awatingOtherBidders":
-      return <WaitingOtherBidders />;
+      return <WaitingOtherBidders nftUri={args[0]}/>;
     case "awatingAuction":
-      return <AwaitingAution />;
+      return <AwaitingAution nftUri={args[0]} />;
     default:
       return (
         <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
           <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
             <div>
+              {args[0] && <img src={`https://gateway.pinata.cloud/ipfs/${args[0]}`} alt="" />}
               <p className=" font-bold">Awating Contract...</p>
             </div>
           </div>

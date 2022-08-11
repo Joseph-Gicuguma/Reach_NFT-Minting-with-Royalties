@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { loadStdlib } from "@reach-sh/stdlib";
+import axios from "axios";
+import { jwt } from "../../privates";
 import {
   InformTimeout,
   SeeOutcome,
@@ -14,15 +16,35 @@ const Reach = loadStdlib("ALGO");
 const CreateNFT = ({ deployContract }) => {
   const [basePrice, setBasePrice] = useState();
   const [royalty, setRoyalty] = useState();
-  const [metaData, setMetaData] = useState();
+  const [nftName, setNftName] = useState();
   const [nftId, setNftId] = useState();
+  const [file, setFile] = useState();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+
+    // const data = new FormData();
+    // data.append('file', file);
+    // data.append('pinataOptions', '{"cidVersion": 1}');
+    // data.append('pinataMetadata', '{"name": "'+nftName+'", "keyvalues": {"company": "Pinata"}}');
+    
+    // const config = {
+    //   method: 'post',
+    //   url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
+    //   headers: { 
+    //     'Authorization': `Bearer ${jwt}`, 
+    //     // ...data.getHeaders()
+    //   },
+    //   data : data
+    // };
+    
+    // const res = await axios(config);
+    // const uri = res.data.IpfsHash;
+
     deployContract(
       {
         basePrice: Reach.parseCurrency(basePrice),
         royalty,
-        uri: metaData,
+        uri: 'bafkreihqgyh6frj5xek4ulzfdkc72tnjps4f4qmybgtnnzzknriozixlpm',
       },
       nftId
     );
@@ -98,7 +120,7 @@ const CreateNFT = ({ deployContract }) => {
                 </div>
                 <div>
                   <label htmlFor="" className="tet-sm">
-                    Metadata
+                    Name
                   </label>
                 </div>
                 <div>
@@ -107,7 +129,24 @@ const CreateNFT = ({ deployContract }) => {
                     placeholder="Metadata"
                     className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300"
                     onChange={(e) => {
-                      setMetaData(e.target.value);
+                      setNftName(e.target.value);
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="" className="tet-sm">
+                    NFT
+                  </label>
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    placeholder="Base price"
+                    className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300"
+                    min={0.001}
+                    step="0.001"
+                    onChange={(e) => {
+                      setFile(e.target.files[0])
                     }}
                   />
                 </div>
@@ -128,7 +167,7 @@ const CreateNFT = ({ deployContract }) => {
   );
 };
 
-const ShowContractInfo = ({ contractInfo, setHasShownContractInfo }) => {
+const ShowContractInfo = ({ contractInfo, setHasShownContractInfo, nftUri }) => {
   const [copied, setCopied] = useState();
   const handleCopy = () => {
     setCopied(true);
@@ -137,6 +176,7 @@ const ShowContractInfo = ({ contractInfo, setHasShownContractInfo }) => {
   return (
     <div className="flex w-full min-h-screen justify-center items-center">
       <div className="flex flex-col space-y-6 bg-cyan-700 w-50% maw-w-4xl p-8 rounded-xl shadow-lg teal-white">
+        <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />
         <div>
           <pre className="mt-4 p-4">{contractInfo}</pre>
         </div>
@@ -181,25 +221,27 @@ const CreatorViews = ({
     case "informTimeout":
       return <InformTimeout />;
     case "seeOutcome":
-      return <SeeOutcome price={args[0]} address={args[1]} />;
+      return <SeeOutcome price={args[0]} address={args[1]} nftUri={args[2]} />;
     case "showBid":
-      return <ShowBid bid={args[0]} />;
+      return <ShowBid bid={args[0]} nftUri={args[1]} />;
     case "isAuctionOn":
       return hasShownContractInfo ? (
-        <IsAuctionOn isAuctionOn={isAuctionOn} />
+        <IsAuctionOn isAuctionOn={isAuctionOn} nftUri={args[2]}/>
       ) : (
         <ShowContractInfo
           contractInfo={args[0]}
           setHasShownContractInfo={args[1]}
+          nftUri={args[2]}
         />
       );
     case "awaitingFirstBidder":
-      return <AwaitingFirstBidder />;
+      return <AwaitingFirstBidder nftUri={args[0]}/>;
     default:
       return (
         <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
           <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
             <div>
+              {args[0] && <img src={`https://gateway.pinata.cloud/ipfs/${args[0]}`} alt="" />}
               <p className=" font-bold">Awating Contract...</p>
             </div>
           </div>
