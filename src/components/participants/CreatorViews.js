@@ -75,7 +75,7 @@ const CreateNFT = ({ deployContract }) => {
                   <input
                     type="number"
                     placeholder="Your ID"
-                    className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 outline-none mt-2 focus:ring-2 focus:ring-teal-300"
+                    className="ring-1 black ring-gray-500 w-full rounded-md px-4 py-2 outline-none mt-2 focus:ring-2 focus:ring-teal-300"
                     min={100}
                     step="1"
                     onChange={(e) => {
@@ -92,7 +92,7 @@ const CreateNFT = ({ deployContract }) => {
                   <input
                     type="number"
                     placeholder="Base price"
-                    className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300"
+                    className="ring-1 ring-gray-500 w-full tet-sm rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300"
                     min={0.001}
                     step="0.001"
                     onChange={(e) => {

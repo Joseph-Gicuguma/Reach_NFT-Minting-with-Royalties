@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { loadStdlib } from "@reach-sh/stdlib";
+import '../views/home/css/style.css';
+import '../views/home/css/style.css.map';
 import {
   InformTimeout,
   SeeOutcome,
@@ -19,54 +21,57 @@ const GetBid = ({ price, getBid, nftUri }) => {
     getBid(bid);
   };
   return (
-    <div className="antaliased">
-      <div className="flex w-full min-h-screen justify-center items-center">
-        <div className="flex flex-col space-y-6 bg-cyan-700 w-50% maw-w-4xl p-8 rounded-xl shadow-lg teal-white">
-          <div className="flex flex-col justify-between">
-            {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
-            <div>
-              <h1 className="font-bold text-4xl tracking-wide">
-                Place your bid
-              </h1>
-              <p className="pt-2 text-cyan-100 text-sm">
-                Price to beat, {formatPrice} ALGO
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <div className="bg-white rounded-xl shadow-lg p-8 ">
-              <form action="" className="flex flex-col space-y-4">
-                <div>
-                  <label htmlFor="" className="tet-sm">
-                    Bid
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    placeholder={`> ${formatPrice}`}
-                    className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 outline-none mt-2 focus:ring-2 focus:ring-teal-300"
-                    min={formatPrice}
-                    step="0.001"
-                    onChange={(e) => {
-                      setBid(e.target.value);
-                    }}
-                  />
-                </div>
-              </form>
+    <div>
+      <div className="antaliased">
+        <div className="flex w-full min-h-screen justify-center items-center">
+          <div className="flex flex-col space-y-6 bg-cyan-700 w-50% maw-w-4xl p-8 rounded-xl shadow-lg teal-white">
+            <div className="flex flex-col justify-between">
+              {nftUri && <img src={`https://gateway.pinata.cloud/ipfs/${nftUri}`} alt="" />}
               <div>
-                <button
-                  className="inline-blovk self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
-                  onClick={handleSubmit}
-                >
-                  Place Bid
-                </button>
+                <h1 className="font-bold text-4xl tracking-wide">
+                  Place your bid
+                </h1>
+                <p className="pt-2 text-cyan-100 text-sm">
+                  Price to beat, {formatPrice} ALGO
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <div className="bg-white rounded-xl shadow-lg p-8 ">
+                <form action="" className="flex flex-col space-y-4">
+                  <div>
+                    <label htmlFor="" className="tet-sm">
+                      Bid
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="number"
+                      placeholder={`> ${formatPrice}`}
+                      className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 outline-none mt-2 focus:ring-2 focus:ring-teal-300"
+                      min={formatPrice}
+                      step="0.001"
+                      onChange={(e) => {
+                        setBid(e.target.value);
+                      }}
+                    />
+                  </div>
+                </form>
+                <div>
+                  <button
+                    className="inline-blovk self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
+                    onClick={handleSubmit}
+                  >
+                    Place Bid
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 };
@@ -78,7 +83,8 @@ const AttachContract = ({ attachContract }) => {
     attachContract(contractInfo);
   };
   return (
-    <div className="antialised bg-zinc-200 ">
+    <div>
+      {/* <div className="antialised bg-zinc-200 ">
       <div className="flex w-full min-h-screen justify-center items-center">
         <div className="flex flex-col  md:space-y-6 space-y-6 md:space-x-0  bg-cyan-600 w-full max-w-4xl p-10 mt-6 rounded-xl shadow-lg text-white items-center">
           <div>
@@ -101,11 +107,39 @@ const AttachContract = ({ attachContract }) => {
           </div>
         </div>
       </div>
+    </div> */}
+      <section class="spacer10" id="banner">
+        <div class="container spacer5 bg-purple ta-center">
+          {/* <h1 class="size5 bold spacebottom2 size4-xs">Get ready to collect<br />our NFT</h1>
+          <a class="btn bg-halfwhite size2 started ">Get started</a> */}
+          <div className="  md:space-y-6 space-y-6  ta-center w-full max-w-4xl p-10 mt-6 rounded-xl shadow-lg text-white items-center">
+          <div>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              class="ring-1 ring-gray-300 rounded-md px-4 py-2 mt-2 outline-none text-black"
+              onChange={(e) => {
+                setContractInfo(e.target.value);
+              }}
+            ></textarea>
+            <button
+              className="flex btn bg-halfwhite size2 started  "
+              onClick={handleSubmit}
+            >
+              Attach
+            </button>
+          </div>
+        </div>
+          
+        </div>
+      </section>
     </div>
   );
 };
 
-const WaitingOtherBidders = ({nftUri}) => {
+const WaitingOtherBidders = ({ nftUri }) => {
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
@@ -118,7 +152,7 @@ const WaitingOtherBidders = ({nftUri}) => {
   );
 };
 
-const AwaitingAution = ({nftUri}) => {
+const AwaitingAution = ({ nftUri }) => {
   return (
     <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
       <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
@@ -149,15 +183,15 @@ const BidderViews = ({
     case "informTimeout":
       return <InformTimeout />;
     case "seeOutcome":
-      return <SeeOutcome price={args[0]} address={args[1]} nftUri={args[2]}/>;
+      return <SeeOutcome price={args[0]} address={args[1]} nftUri={args[2]} />;
     case "showBid":
-      return <ShowBid bid={args[0]} nftUri={args[1]}/>;
+      return <ShowBid bid={args[0]} nftUri={args[1]} />;
     case "isAuctionOn":
-      return <IsAuctionOn isAuctionOn={isAuctionOn} nftUri={args[0]}/>;
+      return <IsAuctionOn isAuctionOn={isAuctionOn} nftUri={args[0]} />;
     case "awaitingFirstBidder":
-      return <AwaitingFirstBidder nftUri={args[0]}/>;
+      return <AwaitingFirstBidder nftUri={args[0]} />;
     case "awatingOtherBidders":
-      return <WaitingOtherBidders nftUri={args[0]}/>;
+      return <WaitingOtherBidders nftUri={args[0]} />;
     case "awatingAuction":
       return <AwaitingAution nftUri={args[0]} />;
     default:
