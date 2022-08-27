@@ -19,9 +19,11 @@ const CreateNFT = ({ deployContract }) => {
   const [nftName, setNftName] = useState();
   const [nftId, setNftId] = useState();
   const [file, setFile] = useState();
+  const [isLoading, setIsLoading] = useState();
 
   const handleSubmit = async () => {
 
+    setIsLoading(true);
     const data = new FormData();
     data.append('file', file);
     data.append('pinataOptions', '{"cidVersion": 1}');
@@ -156,8 +158,9 @@ const CreateNFT = ({ deployContract }) => {
                   // className="inline-blovk self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
                   class="btn bg-purple size2 white "
                   onClick={handleSubmit}
+                  disabled={isLoading}
                 >
-                  Create
+                  {!isLoading ? 'Create' : 'Uploading...'}
                 </button>
               </div>
             </div>
