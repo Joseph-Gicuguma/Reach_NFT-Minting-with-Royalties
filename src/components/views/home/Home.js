@@ -41,7 +41,7 @@ const Home = () => {
 
                             <div class="row col8 col9-md jc-between spacebottom4 jc-evenly-s col12-s">
                                 <a href="#collections" class="btn bg-purple size2 white ">Explore now</a>
-                                <a href="#banner" class="btn bg-white10 size2 white ">Sell NFT</a>
+                                <button href="#banner" class="btn bg-white10 size2 white " onClick={connectWallet}>Sell NFT</button>
                             </div>
 
                             <div class="row jc-between">
@@ -78,7 +78,7 @@ const Home = () => {
                 <div class="container">
                     <h1 class="bold size4 ta-center">About Us</h1>
                     <p class="spacebottom3 halfwhite size2 ta-center">
-                        Lorem ipsum dolor sit amet, consectetur<br />adipiscing elit.
+                        About the Team
                     </p>
                     <div class="row ai-center jc-between flexcol-s">
                         <div class="col5 col10-s spacebottom2-s">
