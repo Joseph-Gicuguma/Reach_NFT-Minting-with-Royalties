@@ -19,6 +19,8 @@ import { MainAppContext } from '../../../context/MainAppContext';
 
 const Navbar = () => {
     const { connectWallet } = useContext(MainAppContext);
+    const { account } = useContext(MainAppContext);
+    const {accountBal} = useContext(MainAppContext);
     return (
         <header class="header bg-white10">
             <div class="container">
@@ -32,8 +34,21 @@ const Navbar = () => {
                     <a href="#collections">Collections</a>
                     <a href="#featured">Featured</a>
                     <a href="#faq">FAQ</a>
-                    <button class="btn bg-purple wallet" onClick={connectWallet}>Connect Wallet</button>
+                    {/* <button class="btn bg-purple wallet" onClick={connectWallet}>Connect Wallet</button> */}
                     {/* <div><button class="btn bg-purple wallet" onClick={connectWallet}></button></div> */}
+                    {
+                        (account == undefined || account == null)
+                            ? (
+                                <button class="btn bg-purple wallet" onClick={connectWallet}>
+                                    Connect Wallet
+                                </button>
+                            )
+                            : (
+                                <div>
+                                    <span className=" font-bold">Balance: </span><span>{accountBal}</span><span className=" font-bold"> ALGO</span>
+                                </div>
+                            )
+                    }
                 </div>
 
                 <div class="fas fa-wallet" id="wallet"></div>

@@ -46,16 +46,16 @@ export const SeeOutcome = ({ price, address, nftUri }) => {
               They Paid
             </p>
 
-            {formatPrice}{" "}<span className=" font-bold">ALGO. </span>
+            <h1 class="size5 bold spacebottom1">{formatPrice}{" "}<span className=" font-bold">ALGO. </span></h1>
 
             <p class="size2 spacebottom3 halfwhite">
               Watchout for the next aution to begin..
             </p>
 
-            <div class="row col8 col9-md jc-between spacebottom4 jc-evenly-s col12-s">
+            {/* <div class="row col8 col9-md jc-between spacebottom4 jc-evenly-s col12-s">
               <a href="#collections" class="btn bg-purple size2 white ">Explore now</a>
               <a href="#banner" class="btn bg-white10 size2 white ">Sell NFT</a>
-            </div>
+            </div> */}
 
             <div class="row jc-between">
               <div class="ta-center">
