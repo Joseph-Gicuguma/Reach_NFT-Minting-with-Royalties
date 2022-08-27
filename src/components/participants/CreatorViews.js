@@ -27,18 +27,18 @@ const CreateNFT = ({ deployContract }) => {
     const data = new FormData();
     data.append('file', file);
     data.append('pinataOptions', '{"cidVersion": 1}');
-    data.append('pinataMetadata', '{"name": "'+nftName+'", "keyvalues": {"company": "Pinata"}}');
-    
+    data.append('pinataMetadata', '{"name": "' + nftName + '", "keyvalues": {"company": "Pinata"}}');
+
     const config = {
       method: 'post',
       url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
-      headers: { 
-        'Authorization': `Bearer ${jwt}`, 
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
         // ...data.getHeaders()
       },
-      data : data
+      data: data
     };
-    
+
     const res = await axios(config);
     const uri = res.data.IpfsHash;
 
@@ -230,7 +230,7 @@ const CreatorViews = ({
       return <ShowBid bid={args[0]} nftUri={args[1]} />;
     case "isAuctionOn":
       return hasShownContractInfo ? (
-        <IsAuctionOn isAuctionOn={isAuctionOn} nftUri={args[2]}/>
+        <IsAuctionOn isAuctionOn={isAuctionOn} nftUri={args[2]} />
       ) : (
         <ShowContractInfo
           contractInfo={args[0]}
@@ -239,16 +239,22 @@ const CreatorViews = ({
         />
       );
     case "awaitingFirstBidder":
-      return <AwaitingFirstBidder nftUri={args[0]}/>;
+      return <AwaitingFirstBidder nftUri={args[0]} />;
     default:
       return (
-        <div className="w-full h-screen bg-zinc-100 flex flex-col justify-between">
-          <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
+        <div>
+          <section id="home" class="spacetop15 spacebottom10">
             <div>
-              {args[0] && <img src={`https://gateway.pinata.cloud/ipfs/${args[0]}`} alt="" />}
-              <p className=" font-bold">Awating Contract...</p>
+              <div className="container">
+                <div className="grid md:grid-cols-2 mx-w-[1240px] m-auto">
+                  <div className="ta-center">
+                  {args[0] && <img src={`https://gateway.pinata.cloud/ipfs/${args[0]}`} alt="" />}
+                    <p className=" font-bold">Awating Contract...</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
       );
   }

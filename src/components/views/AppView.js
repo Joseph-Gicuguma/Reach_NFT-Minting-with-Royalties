@@ -21,32 +21,6 @@ exports.ConnectWallet = ({ connectWallet }) => {
 exports.ChooseRole = (obj) => {
   return (
     <div>
-      {/* <div className="container">
-        <div className="ow jc-between ai-center col-reverse-s">
-          <div className="col5 col6-md col12-s ta-center-s">
-            <h1 className="py-3 text-5xl md:text-5xl font-bold">
-              Please Select User
-            </h1>
-            <button
-              className="py-3 px-6 sm:w-[50%] my-4 flex bg-cyan-700 text-white font-bold rounded-lg "
-              onClick={obj.deployCreator}
-            >
-              <PlusCircleIcon className="h-6 text-indigo-200" />
-              Creator
-            </button>
-            <button
-              className="py-3 px-6 sm:w-[50%] my-4 flex bg-cyan-700 text-white font-bold rounded-lg "
-              onClick={obj.deployBidder}
-            >
-              <ScaleIcon className="h-6 text-indigo-200" />
-              Bidder
-            </button>
-          </div>
-          <div>
-            <img className="w-full" src={bgImg} alt="nft" />
-          </div>
-        </div>
-      </div> */}
       <section id="home" class="spacetop15 spacebottom10">
         <div class="container">
           <div class="row jc-between ai-center col-reverse-s">

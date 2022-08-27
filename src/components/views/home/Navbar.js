@@ -34,8 +34,6 @@ const Navbar = () => {
                     <a href="#collections">Collections</a>
                     <a href="#featured">Featured</a>
                     <a href="#faq">FAQ</a>
-                    {/* <button class="btn bg-purple wallet" onClick={connectWallet}>Connect Wallet</button> */}
-                    {/* <div><button class="btn bg-purple wallet" onClick={connectWallet}></button></div> */}
                     {
                         (account == undefined || account == null)
                             ? (

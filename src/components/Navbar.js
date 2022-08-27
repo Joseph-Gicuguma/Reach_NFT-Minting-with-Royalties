@@ -42,25 +42,10 @@ const Navbar = () => {
                 </div>
               )
             }
-              {/* <div className="md:hidden" >
-                  {!nav ? <MenuIcon className="w-5"/> : <XIcon className="w-5"/> }
-                <MenuIcon className="w-5"/>
-              </div>
-               */}
+              
           </div>
       </div>
       
-    {/* <ul className="absolute bg-zinc-200 v-full px-8">
-        <li className=" border-b-2 border-zinc-300 w-full">Home</li>
-        <li className=" border-b-2 border-zinc-300 w-full">About</li>
-        <li className=" border-b-2 border-zinc-300 w-full">Support</li>
-        <li className=" border-b-2 border-zinc-300 w-full">Platforms</li>
-        <div className="flex flex-col my-4">
-            <button className="bg-transparent text-indigo-600 px-8 py-3 mb-3" onClick={connectWallet}>
-              Connect Wallet
-            </button>
-        </div>
-    </ul> */}
 
     </div>
 

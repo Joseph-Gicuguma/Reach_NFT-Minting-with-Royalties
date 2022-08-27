@@ -35,10 +35,8 @@ const Home = () => {
                             <h1 class="size5 bold spacebottom1">
                                 Create, Sell & Collect Your Own Creative NFT
                             </h1>
-                            <p class="size2 spacebottom3 halfwhite">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Nunc
-                                vulputate
-                                libero et velit.
+                            <p class="size2 spacebottom3 halfwhite">
+                                NFT Minting with Royalties
                             </p>
 
                             <div class="row col8 col9-md jc-between spacebottom4 jc-evenly-s col12-s">
@@ -62,7 +60,6 @@ const Home = () => {
                             </div>
                         </div>
                         <div class="col6 col12-s spacebottom3-s">
-                            {/* <img src="img/heroimage.png" alt="" class="img-responsive float"/> */}
                             <img src={heroimage} alt="heroimage" class="img-responsive float" />
                         </div>
                     </div>
@@ -72,11 +69,8 @@ const Home = () => {
             <section class="spacer5 spacer0-xs">
                 <div class="container row jc-between jc-around-md">
                     <img src={algorand} alt="algorand logo" class="height6 img-responsive-md" />
-                    {/* <img src="img/binance.svg" alt="" class="height6 img-responsive-md"/> */}
                     <img src={binance} alt="binance logo" class="height6 img-responsive-md" />
-                    {/* <img src="img/ethereum.svg" alt="" class="height6 img-responsive-md"/> */}
                     <img src={ehterium} alt="ethereum logo" class="height6 img-responsive-md" />
-                    {/* <img src="img/blockchain.svg" alt="" class="height6 img-responsive-md spacetop1-md"/> */}
                 </div>
             </section>
 
@@ -88,7 +82,6 @@ const Home = () => {
                     </p>
                     <div class="row ai-center jc-between flexcol-s">
                         <div class="col5 col10-s spacebottom2-s">
-                            {/* <img src="img/about.png" class="img-responsive" alt=""/> */}
                             <img src={about} alt="about image" class="img-responsive" />
                         </div>
                         <div class="col6 col12-s ta-center-s">
@@ -121,7 +114,6 @@ const Home = () => {
                     </div>
                     <div class="row box-card jc-evenly-md">
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="art">
-                            {/* <img src="img/collection1.png" class="img-responsive" alt=""/> */}
                             <img src={collection1} alt="collection1 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -140,7 +132,6 @@ const Home = () => {
                             </a>
                         </div>
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="photograpy">
-                            {/* <img src="img/collection2.png" class="img-responsive" alt=""/> */}
                             <img src={collection2} alt="collection2 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -159,7 +150,6 @@ const Home = () => {
                             </a>
                         </div>
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="pattern">
-                            {/* <img src="img/collection3.png" class="img-responsive" alt=""/> */}
                             <img src={collection3} alt="collection3 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -179,7 +169,6 @@ const Home = () => {
                         </div>
 
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="art">
-                            {/* <img src="img/collection4.png" class="img-responsive" alt=""/> */}
                             <img src={collection4} alt="collection4 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -198,7 +187,6 @@ const Home = () => {
                             </a>
                         </div>
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="photograpy">
-                            {/* <img src="img/collection5.png" class="img-responsive" alt=""/> */}
                             <img src={collection5} alt="collection5 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -217,7 +205,6 @@ const Home = () => {
                             </a>
                         </div>
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="pattern">
-                            {/* <img src="img/collection6.png" class="img-responsive" alt=""/> */}
                             <img src={collection6} alt="collection6 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -237,7 +224,6 @@ const Home = () => {
                         </div>
 
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="art">
-                            {/* <img src="img/collection7.png" class="img-responsive" alt=""/> */}
                             <img src={collection7} alt="collection7 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -256,7 +242,6 @@ const Home = () => {
                             </a>
                         </div>
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="photograpy">
-                            {/* <img src="img/collection8.png" class="img-responsive" alt=""/> */}
                             <img src={collection8} alt="collection8 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -275,7 +260,6 @@ const Home = () => {
                             </a>
                         </div>
                         <div class="col4 card collect bg-white10 col5-md col6-s" data-item="pattern">
-                            {/* <img src="img/collection9.png" class="img-responsive" alt=""/> */}
                             <img src={collection9} alt="collection9 image" class="img-responsive" />
                             <div class="row jc-between spacetop2">
                                 <div>
@@ -297,7 +281,7 @@ const Home = () => {
                 </div>
             </section>
 
-            
+
 
 
         </div>
