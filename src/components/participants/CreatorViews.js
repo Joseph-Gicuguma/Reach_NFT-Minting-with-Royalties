@@ -22,29 +22,29 @@ const CreateNFT = ({ deployContract }) => {
 
   const handleSubmit = async () => {
 
-    // const data = new FormData();
-    // data.append('file', file);
-    // data.append('pinataOptions', '{"cidVersion": 1}');
-    // data.append('pinataMetadata', '{"name": "'+nftName+'", "keyvalues": {"company": "Pinata"}}');
+    const data = new FormData();
+    data.append('file', file);
+    data.append('pinataOptions', '{"cidVersion": 1}');
+    data.append('pinataMetadata', '{"name": "'+nftName+'", "keyvalues": {"company": "Pinata"}}');
     
-    // const config = {
-    //   method: 'post',
-    //   url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
-    //   headers: { 
-    //     'Authorization': `Bearer ${jwt}`, 
-    //     // ...data.getHeaders()
-    //   },
-    //   data : data
-    // };
+    const config = {
+      method: 'post',
+      url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
+      headers: { 
+        'Authorization': `Bearer ${jwt}`, 
+        // ...data.getHeaders()
+      },
+      data : data
+    };
     
-    // const res = await axios(config);
-    // const uri = res.data.IpfsHash;
+    const res = await axios(config);
+    const uri = res.data.IpfsHash;
 
     deployContract(
       {
         basePrice: Reach.parseCurrency(basePrice),
         royalty,
-        uri: 'bafkreihqgyh6frj5xek4ulzfdkc72tnjps4f4qmybgtnnzzknriozixlpm',
+        uri,
       },
       nftId
     );
