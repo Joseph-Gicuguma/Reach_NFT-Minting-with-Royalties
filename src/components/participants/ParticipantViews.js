@@ -130,11 +130,11 @@ export const IsAuctionOn = ({ isAuctionOn, nftUri }) => {
               <h1 class="size5 bold spacebottom1">
                 Wanna Start the Bid?
               </h1>
-              <p class="size2 spacebottom3 halfwhite">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {/* <p class="size2 spacebottom3 halfwhite">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Nunc
                 vulputate
                 libero et velit.
-              </p>
+              </p> */}
 
               <div class="row col8 col9-md jc-between spacebottom4 jc-evenly-s col12-s">
                 <button class="btn bg-purple size2 white " onClick={handleAccept}>Yes</button>

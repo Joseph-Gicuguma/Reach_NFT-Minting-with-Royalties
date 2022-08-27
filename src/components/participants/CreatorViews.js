@@ -128,7 +128,7 @@ const CreateNFT = ({ deployContract }) => {
                 <div>
                   <input
                     type="text"
-                    placeholder="Metadata"
+                    placeholder="Name"
                     className="ring-1 ring-gray-500 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300"
                     onChange={(e) => {
                       setNftName(e.target.value);
